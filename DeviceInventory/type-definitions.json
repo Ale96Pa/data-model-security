@@ -1,0 +1,186 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$id": "urn:ngsi-ld:ModelSchema:6137f9b6-cef3-41d4-9687-e775cdab131f",
+  "title": "Common entities included in Device Inventory",
+  "definitions": {
+    "Community": {
+      "type": "object",
+      "required": ["id", "type", "name"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["Community"],
+          "description": "Property. NGSI Entity type. It has to be Community"
+        },
+        "name": {
+          "type": "string"
+        },
+        "HasInventories": {
+          "type": "array"
+        },
+        "allOf": [
+          {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+          }
+        ]
+      }
+    },
+    "DeviceInventory": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "InCommunity": {
+          "type": "string",
+          "description": "The name of the community the building belongs to"
+        },
+        "HasDevices": {
+          "type": "array"
+        }
+      }
+    },
+    "NetworkDevice": {
+      "type": "object",
+      "required": ["id", "type", "hostname"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["switch", "server", "firewall", "workstation", "terminal"]
+        },
+        "hostname": {
+          "type": "string"
+        },
+        "HasOS": {
+          "type": "array"
+        },
+        "HasInterfaces": {
+          "type": "array"
+        }
+      }
+    },
+    "OperatingSystem": {
+      "type": "object",
+      "required": ["id", "family"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "family": {
+          "type": "string",
+          "enum": ["Android", "Unix", "MacOS", "Windows"]
+        },
+        "generation": {
+          "type": "string"
+        },
+        "vendor": {
+          "type": "string"
+        },
+        "HasLocalServices": {
+          "type": "array"
+        },
+        "HasVulnerabilities": {
+          "type": "array"
+        }
+      }
+    },
+    "NetworkInterface": {
+      "type": "object",
+      "required": ["id", "IPaddress", "MACaddress", "subnetwork"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "IPaddress": {
+          "type": "string"
+        },
+        "MACaddress": {
+          "type": "string"
+        },
+        "subnetwork": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "HasPorts": {
+          "type": "array"
+        }
+      }
+    },
+    "Port": {
+      "type": "object",
+      "required": ["id", "number", "status"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "number": {
+          "type": "long"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["open", "close"]
+        },
+        "protocol": {
+          "type": "string"
+        },
+        "HasNetworkService": {
+          "type": "object"
+        }
+      }
+    },
+    "Service": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["network", "local"]
+        },
+        "description": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "HasCPEs": {
+          "type": "array"
+        },
+        "HasVulnerabilities": {
+          "type": "array"
+        }
+      }
+    },
+    "Vulnerability": {
+      "allOf": [
+        {
+          "$ref": "https://csrc.nist.gov/schema/nvd/api/2.0/cve_api_json_2.0.schema"
+        }
+      ],
+      "properties": {
+        "AffectServices": {
+          "type": "array"
+        },
+        "AffectOS": {
+          "type": "array"
+        }
+      }
+    }
+  }
+}

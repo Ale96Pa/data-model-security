@@ -1,0 +1,10 @@
+{
+  "@context": {
+    "type": "@type",
+    "id": "@id",
+    "ngsi-ld": "https://uri.etsi.org/ngsi-ld/",
+    "fiware": "https://uri.fiware.org/ns/dataModels#",
+    "schema": "https://schema.org/",
+    "Community": "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json#Community"
+  }
+}

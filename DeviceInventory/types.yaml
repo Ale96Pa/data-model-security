@@ -1,0 +1,488 @@
+---
+components:
+  schemas:
+    Community:
+      required:
+        - id
+        - type
+        - name
+      properties:
+        id:
+          anyOf: &anyof
+            - description: "Property. Identifier format of any NGSI entity"
+              maxLength: 256
+              minLength: 1
+              pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+              type: string
+          format: uri
+          type: string
+          description: "Unique identifier of the entity"
+          x-ngsi:
+            type: Property
+        type:
+          description: "NGSI Entity type. It has to be Community"
+          enum:
+            - Community
+          type: string
+          x-ngsi:
+            type: Property
+        name:
+          description: "The name of the Community."
+          type: string
+          x-ngsi:
+            type: Property
+        HasInventories:
+          description: "The device inventories contained in the community"
+          type: array
+          items:
+            oneOf:
+              - format: uri
+                type: string
+              - anyOf: *anyof
+                description: "Property. Unique identifier of the entity"
+          x-ngsi:
+            type: "Relationship"
+        # location:
+        # description: "Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon"
+        # oneOf:
+        #   - description: "Geoproperty. Geojson reference to the item. Point"
+        #     properties:
+        #       bbox:
+        #         items:
+        #           type: number
+        #         minItems: 4
+        #         type: array
+        #       coordinates:
+        #         items:
+        #           type: number
+        #         minItems: 2
+        #         type: array
+        #       type:
+        #         enum:
+        #           - Point
+        #         type: string
+        #     required:
+        #       - type
+        #       - coordinates
+        #     title: "GeoJSON Point"
+        #     type: object
+        #   - description: "Geoproperty. Geojson reference to the item. LineString"
+        #     properties:
+        #       bbox:
+        #         items:
+        #           type: number
+        #         minItems: 4
+        #         type: array
+        #       coordinates:
+        #         items:
+        #           items:
+        #             type: number
+        #           minItems: 2
+        #           type: array
+        #         minItems: 2
+        #         type: array
+        #       type:
+        #         enum:
+        #           - LineString
+        #         type: string
+        #     required:
+        #       - type
+        #       - coordinates
+        #     title: "GeoJSON LineString"
+        #     type: object
+        #   - description: "Geoproperty. Geojson reference to the item. Polygon"
+        #     properties:
+        #       bbox:
+        #         items:
+        #           type: number
+        #         minItems: 4
+        #         type: array
+        #       coordinates:
+        #         items:
+        #           items:
+        #             items:
+        #               type: number
+        #             minItems: 2
+        #             type: array
+        #           minItems: 4
+        #           type: array
+        #         type: array
+        #       type:
+        #         enum:
+        #           - Polygon
+        #         type: string
+        #     required:
+        #       - type
+        #       - coordinates
+        #     title: "GeoJSON Polygon"
+        #     type: object
+        #   - description: "Geoproperty. Geojson reference to the item. MultiPoint"
+        #     properties:
+        #       bbox:
+        #         items:
+        #           type: number
+        #         minItems: 4
+        #         type: array
+        #       coordinates:
+        #         items:
+        #           items:
+        #             type: number
+        #           minItems: 2
+        #           type: array
+        #         type: array
+        #       type:
+        #         enum:
+        #           - MultiPoint
+        #         type: string
+        #     required:
+        #       - type
+        #       - coordinates
+        #     title: "GeoJSON MultiPoint"
+        #     type: object
+        #   - description: "Geoproperty. Geojson reference to the item. MultiLineString"
+        #     properties:
+        #       bbox:
+        #         items:
+        #           type: number
+        #         minItems: 4
+        #         type: array
+        #       coordinates:
+        #         items:
+        #           items:
+        #             items:
+        #               type: number
+        #             minItems: 2
+        #             type: array
+        #           minItems: 2
+        #           type: array
+        #         type: array
+        #       type:
+        #         enum:
+        #           - MultiLineString
+        #         type: string
+        #     required:
+        #       - type
+        #       - coordinates
+        #     title: "GeoJSON MultiLineString"
+        #     type: object
+        #   - description: "Geoproperty. Geojson reference to the item. MultiLineString"
+        #     properties:
+        #       bbox:
+        #         items:
+        #           type: number
+        #         minItems: 4
+        #         type: array
+        #       coordinates:
+        #         items:
+        #           items:
+        #             items:
+        #               items:
+        #                 type: number
+        #               minItems: 2
+        #               type: array
+        #             minItems: 4
+        #             type: array
+        #           type: array
+        #         type: array
+        #       type:
+        #         enum:
+        #           - MultiPolygon
+        #         type: string
+        #     required:
+        #       - type
+        #       - coordinates
+        #     title: "GeoJSON MultiPolygon"
+        #     type: object
+        # x-ngsi:
+        #   type: Geoproperty
+      # x-ngsi:
+      #   uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+    DeviceInventory:
+      properties:
+        InCommunity:
+          description: "The name of the community the inventory belongs to."
+          type: string
+          format: uri
+          x-ngsi:
+            type: "Relationship"
+        HasDevices:
+          description: "The list of network devices belonging to the inventory."
+          type: array
+          x-ngsi:
+            type: "Relationship"
+        type: object
+      x-ngsi:
+        # uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+    NetworkDevice:
+      required:
+        - id
+        - type
+        - hostname
+      properties:
+        id:
+          anyOf: &anyof
+            - description: "Property. Identifier format of any NGSI entity"
+              maxLength: 256
+              minLength: 1
+              pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+              type: string
+          format: uri
+          type: string
+          description: "Unique identifier of the entity"
+          x-ngsi:
+            type: Property
+        type:
+          description: "NGSI Entity type."
+          enum:
+            - switch
+            - server
+            - firewall
+            - workstation
+            - terminal
+          type: string
+          x-ngsi:
+            type: Property
+        hostname:
+          description: "The name of device."
+          type: string
+          x-ngsi:
+            type: Property
+        HasOS:
+          description: "The list of operating systems running in the device."
+          type: array
+          x-ngsi:
+            type: Relationship
+        HasInterface:
+          description: "The network interfaces of the device."
+          type: array
+          x-ngsi:
+            type: "Relationship"
+      type: object
+      x-ngsi:
+        # uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+    OperatingSystem:
+      required:
+        - id
+        - family
+      properties:
+        id:
+          anyOf: &anyof
+            - description: "Property. Identifier format of any NGSI entity"
+              maxLength: 256
+              minLength: 1
+              pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+              type: string
+          format: uri
+          type: string
+          description: "Unique identifier of the entity"
+          x-ngsi:
+            type: Property
+        family:
+          description: "NGSI Entity type"
+          enum:
+            - Android
+            - Unix
+            - MacOS
+            - Windows
+          type: string
+          x-ngsi:
+            type: Property
+        generation:
+          description: "The generation type of the operating system."
+          type: string
+          x-ngsi:
+            type: Property
+        vendor:
+          description: "The vendor of the operating system."
+          type: string
+          x-ngsi:
+            type: Property
+        HasLocalServices:
+          description: "The list of local services running in the operating system."
+          type: string
+          format: uri
+          x-ngsi:
+            type: "Relationship"
+        HasVulnerabilities:
+          description: "The list of vulnerabilities affecting the operating system."
+          type: array
+          x-ngsi:
+            type: Relationship
+      type: object
+      x-ngsi:
+        # uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+    NetworkInterface:
+      required:
+        - id
+        - IPaddress
+        - MACaddress
+        - subnetwork
+      properties:
+        id:
+          anyOf: &anyof
+            - description: "Property. Identifier format of any NGSI entity"
+              maxLength: 256
+              minLength: 1
+              pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+              type: string
+            - description: "Property. Identifier format of any NGSI entity"
+          format: uri
+          type: string
+          description: "Unique identifier of the entity"
+          x-ngsi:
+            type: Property
+        IPaddress:
+          description: "IP address of the interface"
+          type: string
+          x-ngsi:
+            type: Property
+        MACaddress:
+          description: "MAC address of the interface"
+          type: string
+          x-ngsi:
+            type: Property
+        subnetwork:
+          description: "subnetwork/mask of the interface"
+          type: string
+          x-ngsi:
+            type: Property
+        name:
+          description: "user friendly name of the interface"
+          type: string
+          x-ngsi:
+            type: Property
+        HasPorts:
+          description: "The list of ports exposed in the interface"
+          type: array
+          x-ngsi:
+            type: "Relationship"
+      type: object
+      x-ngsi:
+        # uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+    Port:
+      required:
+        - id
+        - number
+        - status
+      properties:
+        id:
+          anyOf: &anyof
+            - description: "Property. Identifier format of any NGSI entity"
+              maxLength: 256
+              minLength: 1
+              pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+              type: string
+            - description: "Property. Identifier format of any NGSI entity"
+          format: uri
+          type: string
+          description: "Unique identifier of the entity"
+          x-ngsi:
+            type: Property
+        number:
+          description: "Port number."
+          type: number
+          x-ngsi:
+            type: Property
+        status:
+          description: "The current state of the port."
+          type: string
+          enum:
+            - open
+            - close
+          x-ngsi:
+            type: Property
+        protocol:
+          description: "Communication/Transport protocol."
+          type: string
+          x-ngsi:
+            type: Property
+        HasNetworkService:
+          description: "The network service running on the port."
+          type: object
+          x-ngsi:
+            type: "Relationship"
+      type: object
+      x-ngsi:
+        # uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+    Service:
+      required:
+        - id
+        - type
+      properties:
+        id:
+          anyOf: &anyof
+            - description: "Property. Identifier format of any NGSI entity"
+              maxLength: 256
+              minLength: 1
+              pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+              type: string
+            - description: "Property. Identifier format of any NGSI entity"
+          format: uri
+          type: string
+          description: "Unique identifier of the entity"
+          x-ngsi:
+            type: Property
+        type:
+          description: "Type of service"
+          enum:
+            - network
+            - local
+          type: string
+          x-ngsi:
+            type: Property
+        description:
+          description: "Additional details of the service."
+          type: "string"
+          x-ngsi:
+            type: Property
+        version:
+          description: "Current version of the service."
+          type: "string"
+          x-ngsi:
+            type: Property
+        HasCPEs:
+          description: "The CPEs corresponding ot the service."
+          type: array
+          x-ngsi:
+            type: "Relationship"
+        HasVulnerabilities:
+          description: "The list of vulnerabilities in the service."
+          type: array
+          x-ngsi:
+            type: "Relationship"
+      type: object
+      x-ngsi:
+        # uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+    Vulnerability:
+      allOf:
+        - $ref: "https://csrc.nist.gov/schema/nvd/api/2.0/cve_api_json_2.0.schema"
+      properties:
+        AffectServices:
+          description: "The list of services affected by the vulnerability."
+          type: array
+          x-ngsi:
+            type: "Relationship"
+        AffectOS:
+          description: "The list of operating systems affected by the vulnerability."
+          type: array
+          x-ngsi:
+            type: "Relationship"
+      type: object
+      x-ngsi:
+        # uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+
+info:
+  description: "Data Models used for DeviceInventory"
+  title: DeviceInventoryModeling
+  version: "1.0.0"
+# openapi: "3.0.3"
+# paths:
+#   /ngsi-ld/v1/entities:
+#     get:
+#       responses:
+#         "200":
+#           content:
+#             application/ld+json:
+#               schema:
+#                 type: object
+#           description: OK
