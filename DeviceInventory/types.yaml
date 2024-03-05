@@ -198,6 +198,8 @@ components:
       x-ngsi:
         uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
     DeviceInventory:
+      required:
+        - id
       properties:
         InCommunity:
           description: "The name of the community the inventory belongs to."
@@ -216,7 +218,7 @@ components:
     NetworkDevice:
       required:
         - id
-        - type
+        - class
         - hostname
       properties:
         id:
@@ -231,8 +233,8 @@ components:
           description: "Unique identifier of the entity"
           x-ngsi:
             type: Property
-        type:
-          description: "NGSI Entity type."
+        class:
+          description: "Class of the network device."
           enum:
             - switch
             - server
@@ -346,7 +348,7 @@ components:
           type: string
           x-ngsi:
             type: Property
-        name:
+        ifaceName:
           description: "user friendly name of the interface"
           type: string
           x-ngsi:
@@ -407,7 +409,7 @@ components:
     Service:
       required:
         - id
-        - type
+        - scope
       properties:
         id:
           anyOf: &anyof
@@ -422,7 +424,7 @@ components:
           description: "Unique identifier of the entity"
           x-ngsi:
             type: Property
-        type:
+        scope:
           description: "Type of service"
           enum:
             - network

@@ -30,6 +30,8 @@
       }
     },
     "DeviceInventory": {
+      "type": "object",
+      "required": ["id"],
       "properties": {
         "id": {
           "type": "string",
@@ -46,13 +48,13 @@
     },
     "NetworkDevice": {
       "type": "object",
-      "required": ["id", "type", "hostname"],
+      "required": ["id", "class", "hostname"],
       "properties": {
         "id": {
           "type": "string",
           "format": "uri"
         },
-        "type": {
+        "class": {
           "type": "string",
           "enum": ["switch", "server", "firewall", "workstation", "terminal"]
         },
@@ -110,7 +112,7 @@
         "subnetwork": {
           "type": "string"
         },
-        "name": {
+        "ifaceName": {
           "type": "string"
         },
         "HasPorts": {
@@ -143,13 +145,13 @@
     },
     "Service": {
       "type": "object",
-      "required": ["id", "type"],
+      "required": ["id", "scope"],
       "properties": {
         "id": {
           "type": "string",
           "format": "uri"
         },
-        "type": {
+        "scope": {
           "type": "string",
           "enum": ["network", "local"]
         },

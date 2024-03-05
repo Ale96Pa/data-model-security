@@ -1,0 +1,15 @@
+{
+    "id": "urn:test-device",
+    "type": "NetworkDevice",
+    "type2": {
+        "type": "Property",
+        "value": "workstation"
+    },
+    "hostname": {
+        "type": "Property",
+        "value": "test-host-1"
+    },
+    "@context": [
+        "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/DeviceInventory/type-definitions.json#NetworkDevice"
+    ]
+}
