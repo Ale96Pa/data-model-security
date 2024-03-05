@@ -195,8 +195,8 @@ components:
         #     type: object
         # x-ngsi:
         #   type: Geoproperty
-      # x-ngsi:
-      #   uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+      x-ngsi:
+        uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
     DeviceInventory:
       properties:
         InCommunity:
@@ -212,7 +212,7 @@ components:
             type: "Relationship"
         type: object
       x-ngsi:
-        # uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+        uri-prefix: "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/DeviceInventory/type-definitions.json"
     NetworkDevice:
       required:
         - id
@@ -259,7 +259,7 @@ components:
             type: "Relationship"
       type: object
       x-ngsi:
-        # uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+        uri-prefix: "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/DeviceInventory/type-definitions.json"
     OperatingSystem:
       required:
         - id
@@ -310,7 +310,7 @@ components:
             type: Relationship
       type: object
       x-ngsi:
-        # uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+        uri-prefix: "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/DeviceInventory/type-definitions.json"
     NetworkInterface:
       required:
         - id
@@ -358,7 +358,7 @@ components:
             type: "Relationship"
       type: object
       x-ngsi:
-        # uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+        uri-prefix: "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/DeviceInventory/type-definitions.json"
     Port:
       required:
         - id
@@ -403,7 +403,7 @@ components:
             type: "Relationship"
       type: object
       x-ngsi:
-        # uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+        uri-prefix: "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/DeviceInventory/type-definitions.json"
     Service:
       required:
         - id
@@ -452,7 +452,7 @@ components:
             type: "Relationship"
       type: object
       x-ngsi:
-        # uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+        uri-prefix: "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/DeviceInventory/type-definitions.json"
     Vulnerability:
       allOf:
         - $ref: "https://csrc.nist.gov/schema/nvd/api/2.0/cve_api_json_2.0.schema"
@@ -469,20 +469,20 @@ components:
             type: "Relationship"
       type: object
       x-ngsi:
-        # uri-prefix: "https://raw.githubusercontent.com/SAMSGBLab/iotspaces-DataModels/main/Building/type-definitions.json"
+        uri-prefix: "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/DeviceInventory/type-definitions.json"
 
 info:
   description: "Data Models used for DeviceInventory"
   title: DeviceInventoryModeling
   version: "1.0.0"
-# openapi: "3.0.3"
-# paths:
-#   /ngsi-ld/v1/entities:
-#     get:
-#       responses:
-#         "200":
-#           content:
-#             application/ld+json:
-#               schema:
-#                 type: object
-#           description: OK
+openapi: "3.0.3"
+paths:
+  /ngsi-ld/v1/entities:
+    get:
+      responses:
+        "200":
+          content:
+            application/ld+json:
+              schema:
+                type: object
+          description: OK
