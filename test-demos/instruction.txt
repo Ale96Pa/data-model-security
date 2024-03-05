@@ -1,0 +1,37 @@
+docker-compose up
+
+curl localhost:1026/version
+
+https://curlconverter.com/
+******* Entity creation (POST) ********
+curl localhost:1026/ngsi-ld/v1/entities -s -S -H 'Content-Type: application/ld+json' -d @- <<EOF
+{
+    "id": "urn:test-device-2",
+    "type": "NetworkDevice",
+    "class": {
+        "type": "Property",
+        "value": "workstation"
+    },
+    "hostname": {
+        "type": "Property",
+        "value": "host1"
+    },
+    "HasInterfaces": {
+        "type": "Relationship",
+        "object": [
+            "urn:ngsi-ld:Floor:Test:SmartCitiesdomain:SmartBuildings:38vC2rMpPDpQ1cy52XqxrF",
+            "urn:ngsi-ld:Floor:Test:SmartCitiesdomain:SmartBuildings:0N3USWemr0KgB4UDlFuw2z",
+            "urn:ngsi-ld:Floor:Test:SmartCitiesdomain:SmartBuildings:0Jy7nvJPr4avJ7rEk394Tm",
+            "urn:ngsi-ld:Floor:Test:SmartCitiesdomain:SmartBuildings:1snjtpHWLBnQX6I36Y6QQU"
+        ]
+    },
+    "@context": ["https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/DeviceInventory/context.json"]
+}
+EOF
+
+******* GET without context (only core context in the reply) ********
+curl localhost:1026/ngsi-ld/v1/entities/<entity_ID_TODO> -s -S -H 'Accept: application/ld+json'
+
+******* GET with context (everything in the reply) ********
+curl localhost:1026/ngsi-ld/v1/entities/?<entity_ID_TODO> -s -S -H 'Accept: application/ld+json' -H 'Link: <context_link_TODO>; type="application/ld+json"'
+curl localhost:1026/ngsi-ld/v1/entities/?attr=<attribute_name> -s -S -H 'Accept: application/ld+json' -H 'Link: <context_link_TODO>; type="application/ld+json"'
