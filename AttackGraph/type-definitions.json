@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$id": "urn:ngsi-ld:ModelSchema:6137f9b6-cef3-7521-1477-e775cdab131f",
+  "title": "Common entities included in Attack Graph",
+  "definitions": {
+    "AttackGraph": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "HasDevices": {
+          "type": "array"
+        }
+      }
+    },
+    "AGDevice": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "class": {
+          "type": "string",
+          "enum": ["switch", "server", "firewall", "workstation", "terminal"]
+        },
+        "hostname": {
+          "type": "string"
+        },
+        "InAttackGraph": {
+          "type": "array"
+        },
+        "IsConnectedTo": {
+          "type": "array"
+        },
+        "HasVulnerabilities": {
+          "type": "array"
+        }
+      }
+    },
+    "Vulnerability": {
+      "allOf": [
+        {
+          "$ref": "https://csrc.nist.gov/schema/nvd/api/2.0/cve_api_json_2.0.schema"
+        }
+      ],
+      "properties": {
+        "HasMitigations": {
+          "type": "array"
+        }
+      }
+    },
+    "Mitigation": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "strategy": {
+          "type": "string"
+        },
+        "weakness": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

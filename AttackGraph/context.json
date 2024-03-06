@@ -1,0 +1,24 @@
+{
+  "@context": {
+    "type": "@type",
+    "id": "@id",
+    "ngsi-ld": "https://uri.etsi.org/ngsi-ld/",
+    "fiware": "https://uri.fiware.org/ns/dataModels#",
+    "schema": "https://schema.org/",
+    "AttackGraph"
+    "HasDevices"
+    "AGDevice"
+    "class"
+    "hostname"
+    "InAttackGraph"
+    "IsConnectedTo"
+    "HasVulnerabilities"
+    "Vulnerability"
+    "HasMitigations"
+    "Mitigation"
+    "phase"
+    "strategy"
+    "weakness"
+    "action"
+  }
+}

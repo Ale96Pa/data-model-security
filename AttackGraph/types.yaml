@@ -1,0 +1,36 @@
+components:
+  schemas:
+    DeviceInventory:
+      required:
+        - id
+      properties:
+        InCommunity:
+          description: "The name of the community the inventory belongs to."
+          type: string
+          format: uri
+          x-ngsi:
+            type: "Relationship"
+        HasDevices:
+          description: "The list of network devices belonging to the inventory."
+          type: array
+          x-ngsi:
+            type: "Relationship"
+        type: object
+      x-ngsi:
+        uri-prefix: "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/DeviceInventory/type-definitions.json"
+
+info:
+  description: "Data Models used for AttackGraph"
+  title: AttackGraphModeling
+  version: "1.0.0"
+openapi: "3.0.3"
+paths:
+  /ngsi-ld/v1/entities:
+    get:
+      responses:
+        "200":
+          content:
+            application/ld+json:
+              schema:
+                type: object
+          description: OK
