@@ -5,20 +5,20 @@
     "ngsi-ld": "https://uri.etsi.org/ngsi-ld/",
     "fiware": "https://uri.fiware.org/ns/dataModels#",
     "schema": "https://schema.org/",
-    "AttackGraph"
-    "HasDevices"
-    "AGDevice"
-    "class"
-    "hostname"
-    "InAttackGraph"
-    "IsConnectedTo"
-    "HasVulnerabilities"
-    "Vulnerability"
-    "HasMitigations"
-    "Mitigation"
-    "phase"
-    "strategy"
-    "weakness"
-    "action"
+    "AttackGraph": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#AttackGraph",
+    "HasDevices": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#HasDevices",
+    "AGDevice": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#AGDevice",
+    "class": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#class",
+    "hostname": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#hostname",
+    "InAttackGraph": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#InAttackGraph",
+    "IsConnectedTo": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#IsConnectedTo",
+    "HasVulnerabilities": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#HasVulnerabilities",
+    "Vulnerability": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#Vulnerability",
+    "HasMitigations": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#HasMitigations",
+    "Mitigation": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#Mitigation",
+    "phase": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#phase",
+    "strategy": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#strategy",
+    "weakness": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#weakness",
+    "action": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#action"
   }
 }

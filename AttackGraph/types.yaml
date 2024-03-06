@@ -1,23 +1,87 @@
 components:
   schemas:
-    DeviceInventory:
+    AttackGraph:
       required:
         - id
       properties:
-        InCommunity:
-          description: "The name of the community the inventory belongs to."
-          type: string
-          format: uri
-          x-ngsi:
-            type: "Relationship"
         HasDevices:
-          description: "The list of network devices belonging to the inventory."
+          description: "The list of AG devices belonging to the graph."
           type: array
           x-ngsi:
             type: "Relationship"
-        type: object
+      type: object
       x-ngsi:
-        uri-prefix: "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/DeviceInventory/type-definitions.json"
+        uri-prefix: "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json"
+    AGDevice:
+      required: -id
+      properties:
+        class:
+          description: "The class of the AG device among"
+          type: string
+          x-ngsi:
+            type: "Property"
+        hostname:
+          description: "Name of the AG device"
+          type: string
+          x-ngsi:
+            type: "Property"
+        InAttackGraph:
+          description: "List of attack graphs in which the AG device belongs to"
+          type: array
+          x-ngsi:
+            type: "Relationship"
+        IsConnectedTo:
+          description: "List of AG devices to which the current device is connected"
+          type: array
+          x-ngsi:
+            type: "Relationship"
+        HasVulnerabilities:
+          description: "List of vulnerabilities in the AG device"
+          type: array
+          x-ngsi:
+            type: "Relationship"
+      type: object
+      x-ngsi:
+        uri-prefix: "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json"
+    Vulnerability:
+      allOf:
+        - $ref: "https://csrc.nist.gov/schema/nvd/api/2.0/cve_api_json_2.0.schema"
+      properties:
+        HasMitigations:
+          description: "List of mitigation actions for the vulnerability"
+          type: array
+          x-ngsi:
+            type: "Relationship"
+      type: object
+      x-ngsi:
+        uri-prefix: "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json"
+    Mitigation:
+      required:
+        - id
+      properties:
+        phase:
+          description: "Devlopment phase in which the mitigation can be applied"
+          type: string
+          x-ngsi:
+            type: "Property"
+        strategy:
+          description: "Strategy to put in place the mitigation"
+          type: string
+          x-ngsi:
+            type: "Property"
+        weakness:
+          description: "CWE ID corresponding to the mitiigation"
+          type: string
+          x-ngsi:
+            type: "Property"
+        action:
+          description: "Natural Language description of the mitigation"
+          type: string
+          x-ngsi:
+            type: "Property"
+      type: object
+      x-ngsi:
+        uri-prefix: "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json"
 
 info:
   description: "Data Models used for AttackGraph"
