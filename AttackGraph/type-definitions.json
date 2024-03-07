@@ -39,6 +39,31 @@
         },
         "HasVulnerabilities": {
           "type": "array"
+        },
+        "IsTargetOf": {
+          "type": "array"
+        }
+      }
+    },
+    "AttackPath": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "impact": {
+          "type": "number"
+        },
+        "likelihood": {
+          "type": "number"
+        },
+        "risk": {
+          "type": "number"
+        },
+        "path": {
+          "type": "string"
         }
       }
     },

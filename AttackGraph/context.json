@@ -12,6 +12,7 @@
     "hostname": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#hostname",
     "InAttackGraph": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#InAttackGraph",
     "IsConnectedTo": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#IsConnectedTo",
+    "IsTargetOf": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#IsTargetOf",
     "HasVulnerabilities": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#HasVulnerabilities",
     "Vulnerability": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#Vulnerability",
     "HasMitigations": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#HasMitigations",
@@ -19,6 +20,10 @@
     "phase": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#phase",
     "strategy": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#strategy",
     "weakness": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#weakness",
-    "action": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#action"
+    "action": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#action",
+    "impact": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#impact",
+    "likelihood": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#likelihood",
+    "risk": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#risk",
+    "path": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json#path"
   }
 }

@@ -40,9 +40,41 @@ components:
           type: array
           x-ngsi:
             type: "Relationship"
+        IsTargetOf:
+          description: "List of attack paths targeting the AG device"
+          type: array
+          x-ngsi:
+            type: "Relationship"
       type: object
       x-ngsi:
         uri-prefix: "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json"
+    AttackPath:
+      required: -id
+      properties:
+        impact:
+          description: "Attack Path Impact"
+          type: number
+          x-ngsi:
+            type: "Property"
+        likelihood:
+          description: "Attack Path Likelihood"
+          type: number
+          x-ngsi:
+            type: "Property"
+        risk:
+          description: "Attack Path Risk"
+          type: number
+          x-ngsi:
+            type: "Property"
+        path:
+          description: "Attack Path trace"
+          type: string
+          x-ngsi:
+            type: "Property"
+      type: object
+      x-ngsi:
+        uri-prefix: "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/AttackGraph/type-definitions.json"
+
     Vulnerability:
       allOf:
         - $ref: "https://csrc.nist.gov/schema/nvd/api/2.0/cve_api_json_2.0.schema"
