@@ -1,0 +1,15 @@
+{
+  "@context": {
+    "type": "@type",
+    "id": "@id",
+    "ngsi-ld": "https://uri.etsi.org/ngsi-ld/",
+    "fiware": "https://uri.fiware.org/ns/dataModels#",
+    "schema": "https://schema.org/",
+    "SecurityTrust": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/SecurityTrust/type-definitions.json#SecurityTrust",
+    "host_id": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/SecurityTrust/type-definitions.json#host_id",
+    "vuln_id": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/SecurityTrust/type-definitions.json#vuln_id",
+    "updated": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/SecurityTrust/type-definitions.json#updated",
+    "resources": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/SecurityTrust/type-definitions.json#resources",
+    "internal_checks": "https://raw.githubusercontent.com/Ale96Pa/data-model-security/main/SecurityTrust/type-definitions.json#internal_checks"
+  }
+}

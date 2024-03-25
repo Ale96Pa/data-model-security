@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$id": "urn:ngsi-ld:ModelSchema:6137f9b6-cef3-7521-1477-e775cdab478p",
+  "title": "Common entities included in Security Trust Management",
+  "definitions": {
+    "SecurityTrust": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "host_id": {
+          "type": "string"
+        },
+        "vuln_id": {
+          "type": "string"
+        },
+        "updated": {
+          "type": "number"
+        },
+        "resources": {
+          "type": "number"
+        },
+        "internal_checks": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
